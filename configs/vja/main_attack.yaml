@@ -1,0 +1,18 @@
+method: vja
+experiment: iesbench_attack
+dataset_dir: ${I2ISAFE_DATA}/IESBench
+annotation: ${I2ISAFE_DATA}/IESBench/annotation.json
+output_dir: ${I2ISAFE_OUT}/vja/iesbench_attack
+# ICML 2026 IESBench leaderboard (1054 visually prompted images).
+# Undefended local Qwen-Image-Edit: paper Table ASR 100.0 / HS 4.6.
+# Inference recipe from official src/run.py: 40 steps, true_cfg_scale 4.0, seed 0.
+# prompt_field=question uses the in-image intention; rewrite simulates LLM rewrite.
+hparams:
+  safe: false
+  base_model: Qwen/Qwen-Image-Edit
+  prompt_field: question
+  num_inference_steps: 40
+  true_cfg_scale: 4.0
+  negative_prompt: " "
+  seed: 0
+  cpu_offload: false

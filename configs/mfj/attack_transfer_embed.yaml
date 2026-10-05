@@ -1,0 +1,16 @@
+model_size: "7b"
+shortcut_type: embed
+shortcut_checkpoint: data/models/embed_cosine/FINAL.pth
+starting_lr: 0.01
+lr_decay: true
+num_iterations: 500
+dtype: bfloat16
+image: 2
+prevent_prefixes: false
+prevent_recovery: false
+softmax_temperature: 6
+use_longer_target: true
+num_train_prompts: 10
+train_split: train
+test_split: test
+results_folder: data/results/transfer/embed/

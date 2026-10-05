@@ -1,0 +1,7 @@
+llm_i2i:
+  chameleon-7b:
+    hf_id: facebook/chameleon-7b
+    used_by: [mfj]
+  qwen2.5-vl-7b:
+    hf_id: Qwen/Qwen2.5-VL-7B-Instruct
+    used_by: [vja]

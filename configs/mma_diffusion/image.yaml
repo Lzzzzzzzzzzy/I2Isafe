@@ -1,0 +1,15 @@
+method: mma_diffusion
+experiment: image_main
+modality: image
+dataset_dir: ${I2ISAFE_DATA}/MMA-Diffusion
+output_dir: ${I2ISAFE_OUT}/mma_diffusion/image
+# CVPR 2024 Table 3 / Sec 4.2 image-modal attack + official README:
+#   l2 budget 16, 20 iterations, SD inference steps 8 during attack, grad_reps=8
+#   60 (image, mask) pairs from the authors' HF benchmark (code iterates 63 ids, skips 0-1)
+hparams:
+  seed: 3
+  iter: 20
+  epsl2: 16.0
+  num_inference_steps: 8
+  accumulate: 8
+  sd_inpaint_path: stable-diffusion-v1-5/stable-diffusion-inpainting

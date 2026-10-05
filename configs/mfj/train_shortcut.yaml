@@ -1,0 +1,7 @@
+method: mfj
+experiment: train_shortcut_embed
+stage: train_shortcut
+dataset_dir: ${I2ISAFE_DATA}/MFJ
+upstream_config: ${I2ISAFE_ROOT}/configs/mfj/shortcut_embed_cosine.yaml
+# Paper: embedding shortcut trained on MIMIC-IT (code: pufanyi/MIMICIT CGD_Images)
+# Official experiments/train_shortcut/embed_cosine.yaml.

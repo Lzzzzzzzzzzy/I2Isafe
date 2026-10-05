@@ -1,0 +1,14 @@
+method: coljailbreak
+experiment: main_i2p
+dataset_dir: ${I2ISAFE_DATA}/ColJailBreak
+prompt_file: ${I2ISAFE_DATA}/ColJailBreak/prompts/main.jsonl
+output_dir: ${I2ISAFE_OUT}/coljailbreak/main_i2p
+# NeurIPS 2024 Sec 5.1 + Appendix C.4:
+#   datasets = I2P+VBCDE-100 (105 prompts) and UnsafeEdit (100, not released with the repo)
+#   substitution pool size |S| = 10
+#   ChatGPT generates the pool; SAM + inpainting injects the unsafe word
+# Official code uses gpt-4o + dall-e-3 (paper evaluates DALL·E 2 / GPT-4 via API).
+hparams:
+  substitution_pool_size: 10
+  sam_ckpt: ${I2ISAFE_DATA}/ColJailBreak/sam_vit_h_4b8939.pth
+  openai_api_key: YOUR_OPENAI_KEY

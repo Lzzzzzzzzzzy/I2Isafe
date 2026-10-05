@@ -1,0 +1,7 @@
+method: mfj
+experiment: attack_transfer_10
+stage: attack
+dataset_dir: ${I2ISAFE_DATA}/MFJ
+upstream_config: ${I2ISAFE_ROOT}/configs/mfj/attack_transfer_embed.yaml
+# Paper transfer protocol: optimize on 10 JailbreakBench train prompts, eval on held-out test.
+# Matches experiments/attacks/transfer/embed/10prompts.yaml (500 iters, longer target).

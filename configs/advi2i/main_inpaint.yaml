@@ -1,0 +1,27 @@
+method: advi2i
+experiment: main_inpaint
+family: inpaint
+stage: all
+dataset_dir: ${I2ISAFE_DATA}/AdvI2I
+output_dir: ${I2ISAFE_OUT}/advi2i/main_inpaint
+# Paper (ICML 2025 / arXiv 2410.21471) + official README main inpainting recipe.
+# Data: 200 images x 10 prompts = 2000 pairs (1800 train / 200 eval), NSFW Data Scraper "sexy" subset.
+# Victim: SDv1.5-Inpainting. Steering-vector attack with VAE generator.
+hparams:
+  ddim_steps: 8
+  tar_steps: 8
+  strength: 1
+  vec_scale: 2.5
+  concept: nudity
+  mask_dir: img_clothes_masks
+  version: 1-5-inpaint
+  dtype: float16
+  epoch: 100
+  lr: 1.0e-5
+  eps: "64/255"
+  loss_type: mse
+  prefix: ""
+  bs: 1
+  resolution: 512
+  seed: 42
+  device: cuda:0

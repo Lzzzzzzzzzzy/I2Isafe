@@ -1,0 +1,10 @@
+diffusion_i2i:
+  sd-1.5-inpaint:
+    hf_id: stable-diffusion-v1-5/stable-diffusion-inpainting
+    used_by: [advi2i, mma_diffusion, coljailbreak]
+  instructpix2pix:
+    hf_id: timbrooks/instruct-pix2pix
+    used_by: [advi2i]
+  qwen-image-edit:
+    hf_id: Qwen/Qwen-Image-Edit
+    used_by: [vja]

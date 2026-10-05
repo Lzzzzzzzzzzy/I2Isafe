@@ -1,0 +1,55 @@
+# Python caches
+__pycache__/
+*.py[cod]
+
+# Local experiment logs (wandb run files exceed GitHub's 100 MB file limit)
+wandb/
+
+# Hugging Face download caches
+**/.cache/
+dataset/**/hf_cache/
+
+# Images in datasets and results
+dataset/**/*.png
+dataset/**/*.jpg
+dataset/**/*.jpeg
+dataset/**/*.webp
+dataset/**/*.gif
+dataset/**/*.bmp
+dataset/**/*.tif
+dataset/**/*.tiff
+outputs/**/*.png
+outputs/**/*.jpg
+outputs/**/*.jpeg
+outputs/**/*.webp
+outputs/**/*.gif
+outputs/**/*.bmp
+outputs/**/*.tif
+outputs/**/*.tiff
+
+# Checkpoints in datasets and results
+dataset/**/*.ckpt
+dataset/**/*.pt
+dataset/**/*.pth
+dataset/**/*.bin
+dataset/**/*.safetensors
+outputs/**/*.ckpt
+outputs/**/*.pt
+outputs/**/*.pth
+outputs/**/*.bin
+outputs/**/*.safetensors
+
+# Image shards and archives in datasets and results
+# (each shard is hundreds of MB; GitHub rejects files over 100 MB)
+dataset/**/*.parquet
+dataset/**/*.arrow
+dataset/**/*.zip
+dataset/**/*.tar
+dataset/**/*.tgz
+dataset/**/*.gz
+outputs/**/*.parquet
+outputs/**/*.arrow
+outputs/**/*.zip
+outputs/**/*.tar
+outputs/**/*.tgz
+outputs/**/*.gz

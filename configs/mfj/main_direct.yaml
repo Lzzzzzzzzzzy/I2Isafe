@@ -1,0 +1,8 @@
+method: mfj
+experiment: attack_direct_embed
+stage: attack
+dataset_dir: ${I2ISAFE_DATA}/MFJ
+upstream_config: ${I2ISAFE_ROOT}/configs/mfj/attack_direct_embed.yaml
+# Paper main number (72.5% ASR on JailbreakBench / Chameleon-7B):
+# embedding shortcut, longer target, 500 steps, lr 0.01 with decay, MIMICIT start image.
+# Direct attack: one image per test prompt. Set filter_train_prompts to a single index for a smoke run.

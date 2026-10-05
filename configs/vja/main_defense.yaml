@@ -1,0 +1,18 @@
+method: vja
+experiment: iesbench_defense
+dataset_dir: ${I2ISAFE_DATA}/IESBench
+annotation: ${I2ISAFE_DATA}/IESBench/annotation.json
+output_dir: ${I2ISAFE_OUT}/vja/iesbench_defense
+# Paper introspective defense: Qwen-Image-Edit + Qwen2.5-VL-7B-Instruct (flash_attention_2).
+# Leaderboard "Qwen-Image-Edit-Safe": ASR 66.9 / HS 3.4.
+hparams:
+  safe: true
+  base_model: Qwen/Qwen-Image-Edit
+  safety_model: Qwen/Qwen2.5-VL-7B-Instruct
+  attn_implementation: flash_attention_2
+  prompt_field: question
+  num_inference_steps: 40
+  true_cfg_scale: 4.0
+  negative_prompt: " "
+  seed: 0
+  cpu_offload: false

@@ -1,0 +1,81 @@
+papers:
+  - id: advi2i
+    title: "AdvI2I: Adversarial Image Attack on Image-to-Image Diffusion Models"
+    venue: ICML 2025
+    arxiv: "2410.21471"
+    repo: ../AdvI2I
+    dataset: dataset/AdvI2I
+    main_configs:
+      - configs/advi2i/main_inpaint.yaml
+      - configs/advi2i/main_p2p.yaml
+    main_script: scripts/run_advi2i.sh
+    victim_models:
+      - sd-1.5-inpaint
+      - instructpix2pix
+    metrics: [ASR-NudeNet, ASR-Q16]
+    notes: >
+      200 images x 10 prompts, eps=64/255, ddim_steps=8, vec_scale=2.5,
+      100 epochs, lr=1e-5, MSE. InstructPix2Pix is Table 3; SD-Inpaint is Table 4.
+
+  - id: coljailbreak
+    title: "ColJailBreak: Collaborative Generation and Editing for Jailbreaking Text-to-Image Deep Generation"
+    venue: NeurIPS 2024
+    repo: ../coljailbreak
+    dataset: dataset/ColJailBreak
+    main_configs:
+      - configs/coljailbreak/main.yaml
+    main_script: scripts/run_coljailbreak.sh
+    victim_models: [dall-e, gpt-4-image]
+    metrics: [ASR, CLIP-score]
+    notes: >
+      |S|=10 substitution pool, SAM + inpainting. Paper datasets: I2P+VBCDE-100 (105)
+      and UnsafeEdit (100, not released). Official code uses GPT-4o and DALL·E 3.
+
+  - id: mma_diffusion
+    title: "MMA-Diffusion: MultiModal Attack on Diffusion Models"
+    venue: CVPR 2024
+    arxiv: "2311.17516"
+    repo: ../MMA-Diffusion
+    dataset: dataset/MMA-Diffusion
+    main_configs:
+      - configs/mma_diffusion/textual.yaml
+      - configs/mma_diffusion/image.yaml
+    main_script: scripts/run_mma_diffusion.sh
+    victim_models: [sd-1.5-inpaint]
+    metrics: [ASR-1, ASR-4]
+    notes: >
+      Text: seed 7867, 1000 iters, 10 candidates, length 20. Image: l2=16, 20 iters,
+      8 SD steps, 60 image-mask pairs.
+
+  - id: mfj
+    title: "Gradient-based Jailbreak Images for Multimodal Fusion Models"
+    venue: NeurIPS 2024
+    arxiv: "2410.03489"
+    repo: ../multimodal-fusion-jailbreaks
+    dataset: dataset/MFJ
+    main_configs:
+      - configs/mfj/train_shortcut.yaml
+      - configs/mfj/main_direct.yaml
+      - configs/mfj/main_transfer.yaml
+    main_script: scripts/run_mfj.sh
+    victim_models: [chameleon-7b]
+    metrics: [JailbreakBench-ASR]
+    notes: >
+      Embedding shortcut on MIMICIT, cosine loss. Direct attack 500 steps, lr 0.01,
+      longer target, reported 72.5% on JailbreakBench.
+
+  - id: vja
+    title: "When the Prompt Becomes Visual: Vision-Centric Jailbreak Attacks for Large Image Editing Models"
+    venue: ICML 2026
+    arxiv: "2602.10179"
+    repo: ../VJA
+    dataset: dataset/IESBench
+    main_configs:
+      - configs/vja/main_attack.yaml
+      - configs/vja/main_defense.yaml
+    main_script: scripts/run_vja.sh
+    victim_models: [qwen-image-edit]
+    metrics: [ASR, HS, EV, HRR]
+    notes: >
+      IESBench 1054 images. Attack uses in-image question as prompt, 40 steps, cfg 4.0.
+      Defense is Qwen2.5-VL-7B introspective check (Qwen-Image-Edit-Safe).
